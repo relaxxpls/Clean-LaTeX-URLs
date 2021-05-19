@@ -56,10 +56,15 @@ def parse():
 
 def get_regex(TAGS, ALL=False):
     url_regex = re.compile(
-        r'(?P<url>http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+        r'(?P<pre>)'
+        r'(?P<url>http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)'
+        r'(?P<post>)')
     if not ALL:
         tags_merged = '|'.join(TAGS)
-        url_regex = re.compile(r'(?:\\(?:%s){(?P<url>[^}]+)})' % tags_merged)
+        url_regex = re.compile((
+            r'(?P<pre>\\(?:%s){)' # 'pre' and 'post' are there so that we can replace url (middle text)
+            r'(?P<url>[^}]+)'
+            r'(?P<post>})') % tags_merged)
     return url_regex
 
 
@@ -106,7 +111,8 @@ def download_and_link(url_match, directory):
             print(f'Skipping "{url}" is content already downloaded.')
     except:
         raise SystemExit(f'{sys.exc_info()[0].__name__}: {sys.exc_info()[1]}')
-    return str(download_file)
+    result = url_match.group('pre') + str(download_file) + url_match.group('post')
+    return result
 
 
 # ? Download content and link it
