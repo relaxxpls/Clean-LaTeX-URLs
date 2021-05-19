@@ -1,5 +1,21 @@
-# `TeXURL` - URL parser for LaTeX
+# `TeXURL` - LaTeX Parser for Content Containing URLs
 
-* Download cloud content from your TeX files locally and link it.
+Download content from links inside your TeX files locally and link it.  
+No, this is not present in any of the LaTeX compilers (Yes, even i'm surprised!)  
+Inspired by [this](https://tex.stackexchange.com/a/89521) StackExchange answer.  
 
-References: [1](https://tex.stackexchange.com/a/89521), [Regex Tester](https://www.regextester.com/)
+## Script
+
+```bash
+python ".\src\test.py" ".\test\test_1.tex"
+```
+
+## Changes
+
+- Add verbose option to display or not the content.
+- Create log file to store errors.
+
+<!--
+References:
+Regex Tester: https://www.regextester.com/
+-->

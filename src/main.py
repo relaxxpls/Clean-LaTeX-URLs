@@ -24,14 +24,14 @@ def parse():
 
     INPUT_FILE = args.input.resolve()
     BASE_DIR = INPUT_FILE.parent
-    INPUT_FILE_NAME = INPUT_FILE.name
-    INPUT_FILE_STEM = INPUT_FILE.stem
-    OUTPUT_FILE = BASE_DIR / f'{INPUT_FILE_STEM} TeXURL_out.tex'
+    OUTPUT_FILE = BASE_DIR / f'{INPUT_FILE.stem} TeXURL_out.tex'
     DUMP_DIR = BASE_DIR / '.TeXURL_dump/'
 
-    if INPUT_FILE.is_file() == False:
-        raise FileNotFoundError(
-            'No file named "%s" was found at "%s"' % (INPUT_FILE_NAME, BASE_DIR))
+    try:
+        open(INPUT_FILE)
+    except:
+        print(f'{sys.exc_info()[0].__name__}: {sys.exc_info()[1]}')
+        sys.exit()
 
     # ? Use the user's output file (if valid)
     if args.output is not None:
@@ -58,8 +58,7 @@ def parse():
 
 # ? Returns the regex to search for URLs
 def get_regex(ALL, TAGS):
-    url_regex = re.compile(
-        'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+    url_regex = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
     if not ALL:
         tags_merged = '|'.join(TAGS)
         url_regex = re.compile(r'\\(?:%s){(?P<url>[^}]+)}' % tags_merged)
@@ -74,20 +73,20 @@ def main():
     try:
         with open(INPUT_FILE, 'r') as f:
             lines = f.readlines()
-        DUMP_DIR.mkdir()
+        DUMP_DIR.mkdir(parents=True, exist_ok=True)
+
         with open(OUTPUT_FILE, FORCE) as f:
             for line in lines:
                 urls = url_regex.findall(line)
-                if urls:
-                    # Process the URL here
-                    pass
+                for url in urls:
+                    download_name = url.split('/')[-1]
+                    with requests.get(url, stream=True) as r:
+                        print(DUMP_DIR / download_name)
                 print(line, end='', file=f)
 
-    except OSError as e:
-        print(f'I/O error #{e.errno}: {e.strerror}')
     except:
-        print(f'Unexpected error: {sys.exc_info()[0]}')
-
+        print(f'{sys.exc_info()[0].__name__}: {sys.exc_info()[1]}')
+        sys.exit()
 
 if __name__ == '__main__':
     main()
