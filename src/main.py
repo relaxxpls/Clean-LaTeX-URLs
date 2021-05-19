@@ -3,7 +3,7 @@ from pathlib import Path
 import re
 import requests
 import sys
-import hashlib
+import zlib
 
 
 # ? Provides commandline interface support for the script
@@ -96,8 +96,9 @@ def chk_url(url):
 def download_and_link(url_match, directory):
     url = url_match.group('url')
     try:
-        download_name = url.split('/')[-1]
-        download_file = directory / download_name
+        # ? Hash the URL using Adler-32 as it makes the filename short and sweet.
+        adler32_hash = zlib.adler32(url.encode('utf-8')) & 0xffffffff
+        download_file = directory / format(adler32_hash, 'x')
         if not download_file.is_file():
             if not chk_url(url):
                 return url
