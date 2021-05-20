@@ -2,7 +2,7 @@
 
     \usepackage[breakable]{tcolorbox}
     \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
-    
+
     \usepackage{iftex}
     \ifPDFTeX
     	\usepackage[T1]{fontenc}
@@ -31,7 +31,7 @@
     \usepackage{amsmath} % Equations
     \usepackage{amssymb} % Equations
     \usepackage{textcomp} % defines textquotesingle
-    % Hack from http://tex.stackexchange.com/a/47451/13684 :
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
     \AtBeginDocument{%
         \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
     }
@@ -39,7 +39,7 @@
     \usepackage{eurosym} % defines \euro
     \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
     \usepackage{fancyvrb} % verbatim replacement that allows latex
-    \usepackage{grffile} % extends the file name processing of package graphics 
+    \usepackage{grffile} % extends the file name processing of package graphics
                          % to support a larger range
     \makeatletter % fix for old versions of grffile with XeLaTeX
     \@ifpackagelater{grffile}{2019/11/01}
@@ -70,9 +70,9 @@
     \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
                                 % normalem makes italics be italics, not underlines
     \usepackage{mathrsfs}
-    
 
-    
+
+
     % Colors for the hyperref package
     \definecolor{urlcolor}{rgb}{0,.145,.698}
     \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
@@ -122,7 +122,7 @@
     \newcommand{\RegionMarkerTok}[1]{{#1}}
     \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
     \newcommand{\NormalTok}[1]{{#1}}
-    
+
     % Additional commands for more recent versions of Pandoc
     \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
     \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
@@ -141,8 +141,8 @@
     \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
     \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
     \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    
-    
+
+
     % Define a nice break command that doesn't care if a line doesn't already
     % exist.
     \def\br{\hspace*{\fill} \\* }
@@ -155,12 +155,13 @@
     \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
     % Document parameters
     % Document title
-    \title{Untitled}
-    
-    
-    
-    
-    
+    \title{}
+    \author{}
+
+
+
+
+
 % Pygments definitions
 \makeatletter
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
@@ -263,53 +264,53 @@
 \makeatother
 
 
-    % For linebreaks inside Verbatim environment from package fancyvrb. 
+    % For linebreaks inside Verbatim environment from package fancyvrb.
     \makeatletter
-        \newbox\Wrappedcontinuationbox 
-        \newbox\Wrappedvisiblespacebox 
-        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
-        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
-        \newcommand*\Wrappedcontinuationindent {3ex } 
-        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox} 
-        % Take advantage of the already applied Pygments mark-up to insert 
-        % potential linebreaks for TeX processing. 
-        %        {, <, #, %, $, ' and ": go to next line. 
-        %        _, }, ^, &, >, - and ~: stay at end of broken line. 
-        % Use of \textquotesingle for straight quote. 
-        \newcommand*\Wrappedbreaksatspecials {% 
-            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}% 
-            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}% 
-            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}% 
-            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}% 
-            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}% 
-            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}% 
-            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}% 
-            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}% 
-            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}% 
-            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}% 
-            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}% 
-            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}% 
-            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}% 
-            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}% 
-        } 
-        % Some characters . , ; ? ! / are not pygmentized. 
-        % This macro makes them "active" and they will insert potential linebreaks 
-        \newcommand*\Wrappedbreaksatpunct {% 
-            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}% 
-            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}% 
-            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}% 
-            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}% 
-            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}% 
-            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}% 
-            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}% 
+        \newbox\Wrappedcontinuationbox
+        \newbox\Wrappedvisiblespacebox
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}}
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}}
+        \newcommand*\Wrappedcontinuationindent {3ex }
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox}
+        % Take advantage of the already applied Pygments mark-up to insert
+        % potential linebreaks for TeX processing.
+        %        {, <, #, %, $, ' and ": go to next line.
+        %        _, }, ^, &, >, - and ~: stay at end of broken line.
+        % Use of \textquotesingle for straight quote.
+        \newcommand*\Wrappedbreaksatspecials {%
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}%
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}%
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}%
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}%
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}%
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}%
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}%
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}%
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}%
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}%
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}%
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}%
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}%
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}%
+        }
+        % Some characters . , ; ? ! / are not pygmentized.
+        % This macro makes them "active" and they will insert potential linebreaks
+        \newcommand*\Wrappedbreaksatpunct {%
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}%
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}%
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}%
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}%
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}%
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}%
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}%
             \catcode`\.\active
-            \catcode`\,\active 
+            \catcode`\,\active
             \catcode`\;\active
             \catcode`\:\active
             \catcode`\?\active
             \catcode`\!\active
-            \catcode`\/\active 
-            \lccode`\~`\~ 	
+            \catcode`\/\active
+            \lccode`\~`\~
         }
     \makeatother
 
@@ -332,10 +333,10 @@
             \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
             {\kern\fontdimen2\font}%
         }%
-        
+
         % Allow breaks at special characters using \PYG... macros.
         \Wrappedbreaksatspecials
-        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active 	
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active
         \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
     }
     \makeatother
@@ -345,7 +346,7 @@
     \definecolor{outcolor}{HTML}{D84315}
     \definecolor{cellborder}{HTML}{CFCFCF}
     \definecolor{cellbackground}{HTML}{F7F7F7}
-    
+
     % prompt
     \makeatletter
     \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
@@ -353,11 +354,11 @@
     \newcommand{\prompt}[4]{
         {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
     }
-    
 
-    
+
+
     % Prevent overflowing lines due to hard-to-break entities
-    \sloppy 
+    \sloppy
     % Setup hyperref package
     \hypersetup{
       breaklinks=true,  % so long urls are correctly broken across lines
@@ -367,18 +368,18 @@
       citecolor=citecolor,
       }
     % Slightly bigger margins than the latex defaults
-    
+
     \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
+
+
 
 \begin{document}
-    
-    \maketitle
-    
-    
 
-    
+    \maketitle
+
+
+
+
     \hypertarget{control-of-weir-flow-by-changing-geometry}{%
 \section{Control of Weir Flow by Changing
 Geometry}\label{control-of-weir-flow-by-changing-geometry}}
@@ -429,13 +430,13 @@ height. One with laminar flow and another with turbulent.
 \hypertarget{geometry}{%
 \subsubsection{Geometry:}\label{geometry}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\pRjwIFX.png} \textbf{Figure 1.1:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b3440b20.png} \textbf{Figure 1.1:}
 3D geometry of flow over weir
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\Nc2BAlC.png} \textbf{Figure 1.2:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\af1b0aab.png} \textbf{Figure 1.2:}
 Cross section view
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\6cr53dC.png} \textbf{Figure 1.3:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\af590ab0.png} \textbf{Figure 1.3:}
 Mesh cross section view
 
 \hypertarget{boundary-conditions}{%
@@ -477,7 +478,7 @@ Mesh cross section view
 
 \(H_s = 3\ m, H_w = 3\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\8Iy9t9a.jpg} \textbf{Figure 2.1:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b0170ad3.jpg} \textbf{Figure 2.1:}
 2D mesh for case 1 (H=0)
 
 \hypertarget{mesh-file}{%
@@ -533,7 +534,7 @@ Mesh cross section view
 
 \(H_s = 3\ m, H_w = 2.5\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\x8nHqPb.jpg} \textbf{Figure 2.2:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b2bc0b1b.jpg} \textbf{Figure 2.2:}
 2D mesh for case 2 (H=0.5)
 
 \hypertarget{mesh-file-1}{%
@@ -589,7 +590,7 @@ Mesh cross section view
 
 \(H_w = 2\ m, H_s = 3\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\WNk7ODQ.jpg} \textbf{Figure 2.3:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\afff0abd.jpg} \textbf{Figure 2.3:}
 2D mesh for case 3 (H=1)
 
 \hypertarget{mesh-file-2}{%
@@ -646,11 +647,11 @@ Mesh cross section view
 \paragraph{\texorpdfstring{Laminar flow
 \((v = 0.005\ m/s)\)}{Laminar flow (v = 0.005\textbackslash{} m/s)}}\label{laminar-flow-v-0.005-ms}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\TfVnBSm.png} \textbf{Figure 3.1 A:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b2620b16.png} \textbf{Figure 3.1 A:}
 Velocity profile diagram under laminar conditions with height of stream
 over weir = \(0\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\TrzWFZM.png} \textbf{Figure 3.1 B:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b30c0b1a.png} \textbf{Figure 3.1 B:}
 Pressure field diagram under laminar conditions with height of stream
 over weir = \(0\ m\)
 
@@ -658,11 +659,11 @@ over weir = \(0\ m\)
 \paragraph{\texorpdfstring{Turbulent flow
 \((v = 5\ m/s)\)}{Turbulent flow (v = 5\textbackslash{} m/s)}}\label{turbulent-flow-v-5-ms}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\IwHVfdK.png} \textbf{Figure 3.2 A:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b20d0b09.png} \textbf{Figure 3.2 A:}
 Velocity profile diagram under turbulent conditions with height of
 stream over weir = \(0\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\rgntgsR.png} \textbf{Figure 3.2 B:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b5fa0b7d.png} \textbf{Figure 3.2 B:}
 Pressure field diagram under turbulent conditions with height of stream
 over weir = \(0\ m\)
 
@@ -674,11 +675,11 @@ over weir = \(0\ m\)
 \paragraph{\texorpdfstring{Laminar flow
 \((v = 0.005\ m/s)\)}{Laminar flow (v = 0.005\textbackslash{} m/s)}}\label{laminar-flow-v-0.005-ms-1}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\RPezIb6.png} \textbf{Figure 4.1 A:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b1cf0af8.png} \textbf{Figure 4.1 A:}
 Velocity profile diagram under laminar conditions with height of stream
 over weir = \(0.5\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\OwP5FLW.png} \textbf{Figure 4.1 B:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b05b0aca.png} \textbf{Figure 4.1 B:}
 Pressure field diagram under laminar conditions with height of stream
 over weir = \(0.5\ m\)
 
@@ -686,11 +687,11 @@ over weir = \(0.5\ m\)
 \paragraph{\texorpdfstring{Turbulent flow
 \((v = 5\ m/s)\)}{Turbulent flow (v = 5\textbackslash{} m/s)}}\label{turbulent-flow-v-5-ms-1}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\DDlopKq.png} \textbf{Figure 4.2 A:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b2520b25.png} \textbf{Figure 4.2 A:}
 Velocity profile diagram under turbulent conditions with height of
 stream over weir = \(0.5\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\k6HkEo7.png} \textbf{Figure 4.2 B:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b0980ad5.png} \textbf{Figure 4.2 B:}
 Pressure field diagram under turbulent conditions with height of stream
 over weir = \(0.5\ m\)
 
@@ -702,11 +703,11 @@ over weir = \(0.5\ m\)
 \paragraph{\texorpdfstring{Laminar flow
 \((v = 0.005\ m/s)\)}{Laminar flow (v = 0.005\textbackslash{} m/s)}}\label{laminar-flow-v-0.005-ms-2}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\ZiofUM4.png} \textbf{Figure 5.1 A:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b2a70b04.png} \textbf{Figure 5.1 A:}
 Velocity profile diagram under laminar conditions with height of stream
 over weir = \(1\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\yKVkgDz.png} \textbf{Figure 5.1 B:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b3bd0b40.png} \textbf{Figure 5.1 B:}
 Pressure field diagram under laminar conditions with height of stream
 over weir = \(1\ m\)
 
@@ -714,11 +715,11 @@ over weir = \(1\ m\)
 \paragraph{\texorpdfstring{Turbulent flow
 \((v = 5\ m/s)\)}{Turbulent flow (v = 5\textbackslash{} m/s)}}\label{turbulent-flow-v-5-ms-2}}
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\Sk4lOdu.png} \textbf{Figure 5.2 A:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b2300b1c.png} \textbf{Figure 5.2 A:}
 Velocity profile diagram under turbulent conditions with height of
 stream over weir = \(1\ m\)
 
-\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\UcJ6Rvk.png} \textbf{Figure 5.2 B:}
+\includegraphics{C:\Users\lolop\Repositories\TeXURL\test\.TeXURL_dump\b15b0b01.png} \textbf{Figure 5.2 B:}
 Pressure field diagram under turbulent conditions with height of stream
 over weir = \(1\ m\)
 
@@ -742,7 +743,7 @@ height of stream.
 
 
     % Add a bibliography block to the postdoc
-    
-    
-    
+
+
+
 \end{document}
